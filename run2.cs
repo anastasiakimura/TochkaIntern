@@ -135,9 +135,9 @@ class Program
 
             if (cm == fullMask) return cd;
 
-            for (int rbot = 0; rbot < R; rbot++)
+            for (int robotIndex = 0; robotIndex < R; robotIndex++)
             {
-                int from = pos[rbot];
+                int from = pos[robotIndex];
                 foreach (var e in graph[from])
                 {
                     int kid = e.ToIndex - R;
@@ -146,7 +146,7 @@ class Program
                     if ((e.RequiredMask & ~cm) != 0) continue;
 
                     var newPos = (int[])pos.Clone();
-                    newPos[rbot] = e.ToIndex;
+                    newPos[robotIndex] = e.ToIndex;
                     int nm = cm | bit;
                     int nd = cd + e.Dist;
                     string nkey = string.Join(",", newPos) + "|" + nm;
